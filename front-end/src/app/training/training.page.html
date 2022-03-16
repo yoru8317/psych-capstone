@@ -6,7 +6,7 @@
       <ion-buttons *ngIf="task == null" slot="start">
         <ion-menu-button autoHide="false"></ion-menu-button>
       </ion-buttons>
-      <ion-icon *ngIf="task != null && task != Task.FORCED_CHOICE && task != Task.SAME_DIFFERENT && task != Task.PRETEST && task != Task.POSTTEST" slot="start" color="medium" name="arrow-back" style="margin-left: 1vw; height: 3vh" (click)="taskExitAlert()"></ion-icon>
+      <ion-icon *ngIf="task != null && task != Task.PRETEST && task != Task.POSTTEST" slot="start" color="medium" name="arrow-back" style="margin-left: 1vw; height: 3vh" (click)="taskExitAlert()"></ion-icon>
       <ion-icon *ngIf="userLevel <= 9" slot="end" color="medium" name="help-circle" style="margin-right: 1vw; height: 3vh" (click)="getHelp(false)"></ion-icon>
     </ion-toolbar>
   </ion-header>
@@ -19,14 +19,16 @@
 
     <!--Start Page-->
     <div *ngIf="stage == Stage.START" style="margin-top: 50%">
-      <div *ngIf="userLevel > 0 && userLevel < 9">
+      <div *ngIf="userLevel >= 0 && userLevel < 9">
         <div class="header" style="color:white;margin: 5%"><b>Level {{userLevel}}</b></div>
         <div class="subheader" style="margin: 5%">Are you ready to train?</div>
       </div>
+      <!--
       <div *ngIf="userLevel == 0">
         <div class="header" style = "color:white"><b>Pre-Assessment</b></div>
         <div class="subheader" style="margin: 5%">It looks like you're new, are you ready to begin your pretest?</div>
       </div>
+      -->
       <div *ngIf="userLevel == 9">
         <div class="header" style="color: white;"><b>Post-Assessment</b></div>
         <div class="subheader" style="margin: 5%">It looks like you've completed all eight levels, are you ready to begin your post-test?</div>
@@ -76,7 +78,7 @@
     </div>
 
     <!--Assessment tasks-->
-    <div *ngIf="stage == Stage.ASSESSMENT" style="margin-top: 20px">
+<!--     <div *ngIf="stage == Stage.ASSESSMENT" style="margin-top: 20px">
       <div style="font-size: 6vw">What would you like to do next?</div>
 
       <ion-card (click)="scores[4] == -1 ? task = Task.FORCED_CHOICE : null; renderLevelOneHelp()" button [ngClass]="{'task-done': scores[4] != -1}">
@@ -89,7 +91,7 @@
         <div>Same Different<span *ngIf="scores[5] > -1">: {{scores[Task.SAME_DIFFERENT]}}/{{taskLengths[Task.SAME_DIFFERENT]}}</span></div>
       </ion-card>
 
-    </div>
+    </div> -->
 
     <!--Done Page-->
     <div *ngIf="stage == Stage.DONE" style="margin-top: 40%">
@@ -138,11 +140,11 @@
   <!--Shuffle-->
   <app-shuffle *ngIf="task == Task.SHUFFLE" [facePaths]="trainingFacePaths" (finished)="finished($event, 3)"></app-shuffle>
   <!--Forced Choice-->
-  <app-forced-choice *ngIf="task == Task.FORCED_CHOICE" [facePaths]="assessmentFacePaths" (finished)="finished($event, 4)"></app-forced-choice>
+<!--   <app-forced-choice *ngIf="task == Task.FORCED_CHOICE" [facePaths]="assessmentFacePaths" (finished)="finished($event, 4)"></app-forced-choice> -->
   <!--Same-Different-->
-  <app-same-different *ngIf="task == Task.SAME_DIFFERENT" [facePaths]="assessmentFacePaths" (finished)="finished($event, 5)"></app-same-different>
+<!--   <app-same-different *ngIf="task == Task.SAME_DIFFERENT" [facePaths]="assessmentFacePaths" (finished)="finished($event, 5)"></app-same-different> -->
   <!--Pre-Post-Assessment-->
-  <app-same-different *ngIf="task == Task.PRETEST || task == Task.POSTTEST" [facePaths]="assessmentFacePaths" (finished)="finishPrePost($event)"></app-same-different>
+  <app-same-different *ngIf="task == Task.POSTTEST" [facePaths]="assessmentFacePaths" (finished)="finishPrePost($event)"></app-same-different>
 
   <!--For development only
   <div>
