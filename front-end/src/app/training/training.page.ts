@@ -241,7 +241,6 @@ export class TrainingPage {
   }
 
   iterateStage() {
-    /** 
     this.task = null;
     if (!this.learningDone) {
       this.stage = Stage.START;
@@ -253,19 +252,6 @@ export class TrainingPage {
     } else if (this.scores.includes(-1)) {
       this.stage = Stage.ASSESSMENT;
       if (this.scores[Task.FORCED_CHOICE] == -1 && this.scores[Task.SAME_DIFFERENT] == -1) {
-        this.renderLevelOneHelp();
-      }
-    } else {
-      this.finishLevel();
-      this.scheduleNotification();
-    }
-    **/
-    this.task = null;
-    if (!this.learningDone) {
-      this.stage = Stage.START;
-    } else if (this.trainingNotDone()) {
-      this.stage = Stage.TRAINING;
-      if (this.scores[Task.NAME_FACE] == -1 && this.scores[Task.WHOS_NEW] == -1 && this.scores[Task.MEMORY] == -1 && this.scores[Task.SAME_DIFFERENT] == -1) {
         this.renderLevelOneHelp();
       }
     } else {
