@@ -65,9 +65,9 @@ const slideValues = {
     ['assets/help-slides/training/1.png', 'When you complete a task, you can see your highest score. You must get at least 75% to pass each task, and can do them any number of times.'],
     ['assets/help-slides/training/2.png', 'After passing every task, you can progress to the daily assessment tasks with the bottom right-hand button. You will not be able to come back today after moving on.']
   ],
-  'Assessment Tasks': [
-    ['assets/help-slides/assessment/0.png', 'The daily assessment tasks track your learning progress. You cannot redo or restart them.']
-  ],
+  // 'Assessment Tasks': [
+  //   ['assets/help-slides/assessment/0.png', 'The daily assessment tasks track your learning progress. You cannot redo or restart them.']
+  // ],
   'Finish': [
     ['assets/help-slides/finish/0.png', 'You are done for the day, come back tomorrow for your next training. You can see your training history on the history page.']
   ],
